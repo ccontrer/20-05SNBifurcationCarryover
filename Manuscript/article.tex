@@ -32,7 +32,7 @@
 \bibliographystyle{abbrvnat}
 
 \title{Carryover of a saddle-node bifurcation after transformation of a parameter into a variable}
-\author{Carlos Contreras, Gustavo Carrero, Gerda de Vries}
+\author{Carlos Contreras, Gustavo Carrero and Gerda de Vries}
 % \address{University of Alberta}
 
 
@@ -44,39 +44,55 @@
 
 
 \begin{abstract}
-To do.
-
-Saddle-Node Bifurcation, Carryover, Bifurcations
+Abstract goes here
 \end{abstract}
  
 
 \linenumbers
 
+Consider a biological system that has a saddle-node bifurcation. Saddle-node bifurcations are associated with meaningful properties such as biological switches and hysteresis. Would it be possible that a saddle-node bifurcation is also present if we transform one of the parameters to a variable? One would expect that such biological property in also present in an extended more complex version of the system. If yes, what is the relationship between the saddle-node bifurcations in the original and extended systems? Those bifurcations may not be associated meaning that the biological property is not shared between the two systems.
+
+In the general case, let
+\begin{equation}
+    \dot x = f(x;\mu_{1},\mu_{2}),
+    \label{equ:OriginalSystem}
+\end{equation}
+where $x\in\mathbb{R}^{n}$ and $\mu_{1},\mu_{2}\in\mathbb{R}$, be the \textit{original system} with a saddle-node bifurcation as one of the parameters crosses a critical value. Using continuation we can determine regions in the parameter space ($\mu_{1}\mu_{2}$-plane) where there are two more (less) steady states and the boundary where the bifurcation occurs. Now, transform one of the parameters, for example, $\mu_{1}$, into a variable to define the \textit{extended system}
+\begin{equation}
+    \begin{aligned}
+    \dot x &= f(x,\mu_{1}; \mu_{2}), \\
+    \dot \mu_{1} &= g(\mu_{1}; \mu_{2}),
+    \end{aligned}
+    \label{equ:ExtendedSystem}
+\end{equation}
+where $(x, \mu_{1})\in\mathbb{R}^{n+1}$ and $g(\mu_{1}; \mu_{2})$ is the vector field of the new variable $\mu_{1}$. We are interested in conditions for which a saddle-node bifurcation occurs as $\mu_{2}$ varies. From the bifurcation boundary in the $\mu_{1}\mu_{2}$-plane we can infer places in which a saddle-node bifurcation might occur as seen from the $\mu_{2}$-axis. When a saddle-node bifurcation does occur in the extended system \eqref{equ:ExtendedSystem} that is related to the saddle-node bifurcation in the original system \eqref{equ:OriginalSystem}, we call this the \textit{carryover of a saddle-node bifurcation} in the original system to the extended system. 
+
+Note that we can further generalize our study by considering multi-parametric spaces ($\mu \in \mathbb{R}^{m}$) and function $g$ depending on variables $z$. This is beyond the scope of this paper, but we briefly discuss this case in Section~\ref{sec:Discussion}.
 
 Consider the dimensionless model for the activation of gen $x$ by biochemical substance $s$
 \begin{equation}
     \dot x = s - rx + \frac{x^{2}}{1+x^{2}},
     \label{equ:Example:GenActivation:1D}
 \end{equation}
-where $r>0$ is the degradation rate and $s\geq0$ \citep{Strogatz1994, Lewis1977}. This model is characterized by an irreversible switch-like activation (critical transition) of gen when $s$ increases from zero above a threshold. Suppose that we incorporate the dynamics of $r$ into the system, can we preserve the critical transition characteristic? and if so, can we determine conditions for that? The critical transition is determined by a critical saddle-node bifurcation in which the stable equilibrium for low gen activity collides with an unstable equilibrium, leading trajectories towards the remaining stable equilibria for high gen activity. If $r$ is transformed into a variable, we would expect the same critical saddle-node bifurcation to occur but in a higher dimension. In that case, we say that we extend the smaller system and that we carryover the bifurcation to the extended system. In this paper, we provide conditions for the carryover property and apply our results to two model in mathematical biology.
+where $r>0$ is the degradation rate and $s\geq0$ \citep{Strogatz1994, Lewis1977}. This model is characterized by an irreversible switch-like activation (critical transition) of gen $x$ when $s$ increases from zero above the threshold $s*=\frac{1}{2}$. This means that the activating biological signal needs to be high enough to activate the gen. Suppose that the degradation rate $r$ varies over time and that we incorporate its dynamics into the system, can we preserve the critical transition characteristic of gen $x$? and if yes, can we determine conditions for which the critical transition exists? The critical transition in \eqref{equ:Example:GenActivation:1D} is determined by a critical saddle-node bifurcation where the stable equilibrium in which gen activity is low collides with an unstable equilibrium, leading trajectories towards the remaining stable equilibrium in which gen activity is high. If $r$ is transformed into a variable, we would expect the same critical saddle-node bifurcation to occur but in a higher dimension. In that case, we say that we extend the smaller system and that we carryover the bifurcation to the extended system. 
+
+Consider also the regulatory network for cell division involving Cyclin B and APC (Anaphase Promoting Complex). High activity of APC determines cell division, but APC and Cyclin B regulate each other in a mutual antagonism keeping APC activity low. The active form of Cdc20, which increases as the cell grows, activates APC driving cell division. Is this regulatory network the cell mass acts an parameter driving the critical transition, i.e., there is . The model is given by
+\begin{equation}
+    \begin{aligned}
+        \frac{dY}{dt} &= k_{1} - (k_{2p} + k_{2pp}P)Y, \\
+        \frac{dP}{dt} &= \frac{(k_{3p}+k_{3pp}A)(1-P)}{J_{3}+(1-P)} - k_{4m}\frac{YP}{J_{4}+P}, \\
+        \frac{dA}{dt} &= k_{5p} + k_{5pp}\frac{(mY/J_{5})^{n}}{1+(mY/J_{5})^{n}} - k_{6}A,
+    \end{aligned}
+    \label{equ:Example:CyclinActivation:1D}
+\end{equation}
+where $Y$ is the concentration of CyclinB, $P$ is the concentration of Cdh1 (part of APC), $A$ is the concentration of active of Cdc20, and $m$ is the cell mass \citep{Segel2013,Tyson2001}. We are interested in transforming the cell mass into a variable, yet the critical transition determining cell division must exist in the extended system.
+
 
 % Saddle-node bifurcations are very common in biology, medicine and ecology [references, eg. Li et al. 2019], explaining hysteresis and critical transitions. 
 
+In this paper, we provide conditions in which the extended system \eqref{equ:1DCase:ExtendedSystem} has a saddle-node bifurcation provided the original system \eqref{equ:1DCase:OriginalSystem} has a saddle-node bifurcation. The we apply our findings to the gen activation \eqref{equ:Example:GenActivation:1D} and cell cycle division \eqref{equ:Example:CyclinActivation:1D} applications.
 
-In the general case, we are interested in the conditions such that a saddle-node bifurcation for the system
-\begin{equation}
-    \dot z = f(z;\mu_{1},\mu_{2}),
-    \label{equ:OriginalSystem}
-\end{equation}
-where $z\in\mathbb{R}^{n}$ and $\mu_{1},\mu_{2}\in\mathbb{R}$, manifests itself after we extend the system by transforming one of the parameters, for example, $\mu_{1}$, into a variable. This defines the extended system
-\begin{equation}
-    \left. \begin{aligned}
-    \dot z &= f(z,\mu_{1}; \mu_{2}), \\
-    \dot \mu_{1} &= g(\mu_{1}; \mu_{2}),
-    \end{aligned} \right.
-    \label{equ:ExtendedSystem}
-\end{equation}
-where a saddle-node bifurcation occurs and $g(\mu_{1}; \mu_{2})$ is the vector field of the new variable $\mu_{1}$. We call this saddle-node the carryover of a saddle-node bifurcation in the original system \eqref{equ:OriginalSystem} to the extended system \eqref{equ:ExtendedSystem}. Note that the function $g$ does not depend on $z$. The case where $g$ depends on $z$ is beyond the scope of this chapter, but we briefly discuss this case in Section~\ref{sec:Discussion}.
+\section{Background}
 
 Saddle-node bifurcations in $\mathbb{R}^{n}$ are characterized by three conditions: singularity, nondegeneracy, and transversality conditions. They guarantee the creation (or destruction) of two equilibria as one parameter crosses the bifurcation value. This is summarized in the following results taken from \citet[Ch. 8]{Meiss2007}.
 
