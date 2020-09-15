@@ -45,7 +45,7 @@
 
 
 \begin{abstract}
-Abstract goes here
+Abstract goes here.
 \end{abstract}
  
 
@@ -607,17 +607,18 @@ As we might expect, Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1D
 
 \section{Applications}
 
-In this section we apply Propositions~\ref{the:NDCase:SaddleNodeBifurcationExtensionND} and \ref{the:NDCase:SaddleNodeBifurcationExtensionNDCorollary} to two models: the gen activation model \eqref{equ:Example:GenActivation:1D} and a model for the G2/M transition.
+In this section we apply Propositions~\ref{the:NDCase:SaddleNodeBifurcationExtensionND} and \ref{the:NDCase:SaddleNodeBifurcationExtensionNDCorollary} to two models: the gen activation model \eqref{equ:Example:GenActivation:1D} and the cell cycle regulatory model \eqref{equ:Example:CyclinActivation:1D}.
 
+\subsection{Gen activation}
 
-Consider the gen activation model \eqref{equ:Example:GenActivation:1D} where 
+Consider the gen activation model \eqref{equ:Example:GenActivation:1D}, where 
 \[f(x;r,s)=s-rx+\frac{x^{2}}{1+x^{2}}.\]
-This model is characterized by the existance of a saddle-node bifurcation as $s$ increases from zero when $r<\tfrac{1}{2}$. If the initial condition are $x(0)=0$, inceasing $s$ would drive a critical transition that brings the activity of gen $x$ to the high value equilibria, thus activating the gene. If the value of $s$ is decreased, the activity of the gen remains in the active mode (see Figure~\ref{fig:Example:GenActivation}).
+This model is characterized by the existence of a saddle-node bifurcation as $s$ increases from zero when $r<\tfrac{1}{2}$ (see Figure~\ref{fig:Example:GenActivation}a). With initial condition $x(0)=0$, increasing $s$ would drive a critical transition that brings the activity of gen $x$ to the high values, thus activating the gene. If the value of $s$ is decreased, the activity of the gen remains in the active mode (see Figure~\ref{fig:Example:GenActivation}a).
 The singularity conditions, $f=0$ and $D_{x}f=0$, give a parametrization of $r$ and $s$ in terms of $0< x\leq 1$
 \[
-r=\frac{2x}{(1+x^{2})^{2}}, \quad s = \frac{x^{2}(1-x^{2})}{(1+x^{2})^{2}},
+r=\frac{2x}{(1+x^{2})^{2}}, \quad s = \frac{x^{2}(1-x^{2})}{(1+x^{2})^{2}}.
 \]
-since $s\geq0$ and $r>0$. The nondegeneracy condition requires
+The nondegeneracy condition requires
 \[
 D_{xx}f = \frac{2(1-3x^{2})}{(1+x^{2})^{3}}\neq 0 \implies x\neq \frac{\sqrt{3}}{3},
 \]
@@ -626,41 +627,51 @@ and the transversality conditions, $D_{s}f=1\neq$ and $D_{r}f=-x\neq 0 $, do not
     \Gamma = \left\{ (x,r,s) : r=\frac{2x}{(1+x^{2})^{2}}, s = \frac{x^{2}(1-x^{2})}{(1+x^{2})^{2}}, x\in (0,1]\right\},
     \label{equ:Example:GenActivation:Gamma}
 \end{equation}
-and there is a saddle-node bifurcation at $(x,a,b)\in\Gamma$ such that $x\neq\frac{\sqrt{3}}{3}$. The two-parameter bifurcation curve on is shown in Figure~\ref{fig:Example:GenActivation}.
+and there is a saddle-node bifurcation at any $(x,a,b)\in\Gamma$ such that $x\neq\frac{\sqrt{3}}{3}$. The two-parameter bifurcation curve on is shown in Figure~\ref{fig:Example:GenActivation}b.
 
 
 \begin{figure}
     \begin{center}
-    \begin{tikzpicture}
-        \begin{axis}[
-                xmin=0,xmax=2.5,
-                ymin=-0.2,ymax=1.1,
-                xlabel={$x$},
-                ylabel={$y$},
-                scale=0.8,
-                ]
-            \addplot [domain=0:3, samples=50, color=blue] ({x},{x^2/(1+x^2)});
-            \addplot [domain=0:3, samples=50, color=red] ({x},{0.4*x});
-            \addplot [domain=0:3, samples=50, color=red] ({x},{-0.1+0.4*x});
-        \end{axis}
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \begin{axis}[
-                xmin=0,xmax=0.7,
-                ymin=0,ymax=0.15,
-                xlabel={$r$},
-                ylabel={$s$},
-                scale=0.8,
-                ]
-                \addplot [domain=0:1, samples=50] ({2*x/(1+x^2)^2},{x^2*(1-x^2)/(1+x^2)^2});
-                \addplot [domain=0:1, samples=50,color=blue] ({0.4},{x});
-                \addplot [domain=0:1, samples=50,color=red] ({0.6},{x});
-        \end{axis}
-    \end{tikzpicture}
+    \includegraphics[width=0.48\linewidth]{Manuscript/figures/ApplicationGenPhasePortrait.pdf}
+    \includegraphics[width=0.48\linewidth]{Manuscript/figures/ApplicationGenTwoParBifurcation2.pdf}
+    \includegraphics[width=0.48\linewidth]{Manuscript/figures/ApplicationGenExtended2Bifurcation.pdf}
+    \includegraphics[width=0.48\linewidth]{Manuscript/figures/ApplicationGenTwoParBifurcation1.pdf}
     \end{center}
-    \caption{Left: Phase plot. Right: Two-parameter bifurcation diagram.}
+    \caption{a) Phase plot for $s=0$ and $r=0.4$. The critical transition occurs when $s$ increases and the left and middle equilibria collide and disappear at $s^*\approx 0.0418$, forcing gen activity to the remaining stable equilibria on the right. b) Two-parameter bifurcation diagram. The enclosed region corresponds to bistability (as shown in a)). The cusp corresponds to $x=\sqrt{3}/3$ (nondegeneracy condition not met) where a cusp bifurcation occurs. The blue horizontal (vertical) line is the nullcline $g=0$ of the extended system. c) Bifurcation diagram for the extended system. [d) Two-parameter bifurcation diagram. Showing both cases (transforming $r$ or $s$), keep one of them after discussion]}
     \label{fig:Example:GenActivation}
 \end{figure}
+
+[Showing both cases (transforming $r$ or $s$), keep one of them after discussion]
+
+
+\subsubsection{Transform $s$ into a variable}
+Now consider transforming $s$ into a variable with linear synthesis and degradation terms
+\begin{equation}
+    \begin{aligned}
+        \dot x & = f(x,s;r) = s - rx + \frac{x^{2}}{1+x^{2}}, \\
+        \dot s & = g(s;r) = a - bs.
+    \end{aligned}
+    \label{equ:Example:GenActivation2:2D}
+\end{equation}
+where $a>0$ and $b>0$. Note that the signal $s$ goes to a stable equilibrium $s=c=\frac{a}{b}$. Then, as long as $c$ is large enough the gen becomes active independently of the initial condition for $s$. For instance, for $r=0.4$ we need $c>s^*\approx0.0418$ (see Figure~\ref{fig:Example:GenActivation}a). The questions now is: given $c$ large enough, would it be possible to inactivate the gen of prevent the activation of the gen by varying the inactivation rate $r$? This can be answered with the proposition presented here.
+
+Take $x=0.3$ and use \eqref{equ:Example:GenActivation:Gamma} to compute $s=\tfrac{819}{11881}\approx0.0689$ and $r=\tfrac{6000}{11881}\approx 0.5050$, then if $c=\frac{a}{b}=\tfrac{819}{11881}>s^*$ the conditions of Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1D} are satisfied, i.e., $(x,s,r)\in\Gamma$ such that $g=0$ and $D_{r}g=-b\neq 0$ (singularity conditions \eqref{equ:1DCase:Proposition1:SingularityConditions}) and
+\[\det\begin{pmatrix}
+            D_{r}f & D_{r}g \\
+            D_{s}f & D_{s}g
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            -x & -a\\
+            1 & 0
+        \end{pmatrix} = a \neq 0,\]
+(transversality condition \eqref{equ:1DCase:Proposition1:TransversalityCondition}). This guarantees that there is saddle-node bifurcation as $r$ increases from 0.4, but it is not clear if this bifurcation drives gen inactivation via a critical transition. 
+
+If we apply Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1DCorollary} to Figure~\ref{fig:Example:GenActivation}, we find two saddle-node bifurcations as the nullclines of $g=0$ corresponding to $s=c\approx0.0689$ crosses transversally the two-parameter bifurcation curve. From here it is clear that the first saddle-node bifurcation, occurring at the bifurcation point mentioned above, gives rise to two equilibria (one stable and one unstable), but the second saddle-node bifurcation (where the unstable equilibria collides with the equilibria for active gen) drives the critical transition that inactivates the gen. Note that if $r$ decreases back to 0.4 the gen becomes active again by the `reverse' process.
+
+Ultimately, we can show that gen inactivation is possible from the usual bifurcation diagram of the extended system, shown in Figure~\ref{fig:Example:GenActivation}c. 
+
+
+\subsubsection{Transform $r$ into a variable}
 
 Now, consider transforming $r$ into a variable with linear synthesis and degradation terms
 \begin{equation}
@@ -668,9 +679,10 @@ Now, consider transforming $r$ into a variable with linear synthesis and degrada
         \dot x & = f(x,r;s) = s - rx + \frac{x^{2}}{1+x^{2}}, \\
         \dot r & = g(r;s) = a - br.
     \end{aligned}
-    \label{equ:Example:GenActivation:2D}
+    \label{equ:Example:GenActivation1:2D}
 \end{equation}
 where, $a>0$ and $b>0$.
+
 According to Proposition \ref{the:1DCase:SaddleNodeBifurcationExtension1D}, there is a saddle-node bifurcation since the singularity conditions, $g=0$ and $D_{r}g=-b\neq 0$, and the transversality condition
 \[\det\begin{pmatrix}
             D_{r}f & D_{r}g \\
@@ -680,12 +692,9 @@ According to Proposition \ref{the:1DCase:SaddleNodeBifurcationExtension1D}, ther
             -x & -a\\
             1 & 0
         \end{pmatrix} = a \neq 0,\]
-are satisfied for $(x,r,s)\in \Gamma$, with $r=c=\frac{a}{b}$. This is also shown in Figure~\ref{fig:Example:GenActivation} applying Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1DCorollary} where the nullclines of $g=0$ corresponding to $c=0.4$ and $c=0.6$ cross the two-parameter bifurcation curve transversally. Moreover, if $c=0.4$, $x(0)=0$, and $s$ increases from zero crossing the bifurcation curve at $s\approx0.05$, the critical transition occurs and the gen is activated even after $s$ returns to zero. Since $r$ is dynamic, the exact value of $s$ for whic the gen is activated depends on the value of $r(0)$ but is close to $s\approx0.05$. 
+are satisfied for $(x,r,s)\in \Gamma$, with $r=c=\frac{a}{b}$. This is also shown in Figure~\ref{fig:Example:GenActivation} applying Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1DCorollary} where the nullclines of $g=0$ corresponding to $c=0.4$ and $c=0.6$ cross the two-parameter bifurcation curve transversally. Moreover, if $c=0.4$, $x(0)=0$, and $s$ increases from zero crossing the bifurcation curve at $s\approx0.05$, the critical transition occurs and the gen is activated even after $s$ returns to zero. Since $r$ is dynamic, the exact value of $s$ for which the gen is activated depends on the value of $r(0)$ but is close to $s\approx0.05$. 
 
-[To do: type calculations and show there is a saddle-node bifurcation but using Theorem~\ref{the:SaddleNodeBifurcationND}.]
-
-[To do: type G2 checkpoint and Cyclin activation application, or decide which of these two we should keep.]
-
+\subsection{Cell cycle division}
 
 \section{Discussion}
 \label{sec:Discussion}
