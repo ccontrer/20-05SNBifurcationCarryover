@@ -71,30 +71,30 @@ where $(z, \mu_{1})\in\mathbb{R}^{n+1}$ and $g(\mu_{1}; \mu_{2})$ is the vector 
 Consider the following two examples. First, consider the dimensionless model for the activation of gen $x$ by biochemical substance $s$ given by
 \begin{equation}
     \dot x = s - rx + \frac{x^{2}}{1+x^{2}},
-    \label{equ:Example:GenActivation:1D}
+    \label{equ:Application:GenActivation:1D}
 \end{equation}
 where $r>0$ is the degradation rate and $s\geq 0$ \citep{Strogatz1994, Lewis1977}. This model is characterized by an irreversible switch-like activation (critical transition) of gen $x$ when $s$ increases from zero above the threshold $s^*$. This means that the activating biological signal needs to be high enough to activate the gen. Suppose that we include the dynamics of substrate $s$ into the system such that the gen becomes always becomes active,
 % Suppose that the degradation rate $r$ varies over time and that we incorporate its dynamics into the system, 
 can the use the degradation rate in order to inactivate the gen?
-% The critical transition in \eqref{equ:Example:GenActivation:1D} is determined by a critical saddle-node bifurcation where the stable equilibrium in which gen activity is low collides with an unstable equilibrium, leading trajectories towards the remaining stable equilibrium in which gen activity is high. If $s$ is transformed into a variable, we would expect a similar critical saddle-node bifurcation to occur but in a higher dimension.
+% The critical transition in \eqref{equ:Application:GenActivation:1D} is determined by a critical saddle-node bifurcation where the stable equilibrium in which gen activity is low collides with an unstable equilibrium, leading trajectories towards the remaining stable equilibrium in which gen activity is high. If $s$ is transformed into a variable, we would expect a similar critical saddle-node bifurcation to occur but in a higher dimension.
 
-Second, consider the regulatory network for cell division involving Cyclin B and APC (Anaphase Promoting Complex). High activity of APC determines cell division, but APC and Cyclin B regulate each other in a mutual antagonism keeping APC activity low. The active form of Cdc20, which increases as the cell grows, activates APC driving cell division. Is this regulatory network the cell mass acts a parameter driving the critical transition, i.e., there is a saddle-node bifurcation in which the activity of APC increases abruptly as the cell mass increases. The model is given by
+Second, consider the regulatory network for cell cycle involving Cyclin B and APC (Anaphase Promoting Complex) mutual antagonism regulating the start and finish of the cell cycle. The start of the G1 phase is characterize by low levels of Cyclin B by the action of active APC. Cell growth promotes APC inactivation which in turn allows for Cyclin B synthesis (and more APC inactivation?) in a critical transition, defining the start of the cell cycle. During the S-G2-M phase, Cyclin B activity is high which promotes activity of Cdc20, an activating subunit of APC. At the finish of S-G2-M, active APC targets Cyclin B to by destroyed closing the cell cycle. Is this regulatory network, the cell mass acts a slow parameter driving the critical transition of the start of the cell cycle, i.e., there is a saddle-node bifurcation in which the activity of Cyclin B increases quickly as the cell mass increases. The model is given by
 \begin{equation}
     \begin{aligned}
         \frac{dY}{dt} &= k_{1} - (k_{2p} + k_{2pp}P)Y, \\
-        \frac{dP}{dt} &= \frac{(k_{3p}+k_{3pp}A)(1-P)}{J_{3}+(1-P)} - k_{4m}\frac{YP}{J_{4}+P}, \\
+        \frac{dP}{dt} &= \frac{(k_{3p}+k_{3pp}A)(1-P)}{J_{3}+(1-P)} - k_{4}m\frac{YP}{J_{4}+P}, \\
         \frac{dA}{dt} &= k_{5p} + k_{5pp}\frac{(mY/J_{5})^{n}}{1+(mY/J_{5})^{n}} - k_{6}A,
     \end{aligned}
-    \label{equ:Example:CyclinActivation:1D}
+    \label{equ:Application:CyclinActivation:1D}
 \end{equation}
-where $Y$ is the concentration of CyclinB, $P$ is the concentration of Cdh1 (part of APC), $A$ is the concentration of active of Cdc20, and $m$ is the cell mass \citep{Segel2013,Tyson2001}. Supose that we are interested in transforming the cell mass into a variable so that cell division occurs for the appropriate initial conditions, is there another parameter that drives the cell division when the cell is unable to grow large enough?
+where $Y$ is the concentration of Cyclin B, $P$ is the concentration of active APC (given by subunit Cdh1), $A$ is the concentration of active of Cdc20, $m$ is the cell mass, $k$ parameters are production and decay rates, and  $J$ parameters are saturation constants \citep{Segel2013,Tyson2001}. This is a basic model for the cell cycle accounting for the G1 checkpoint, identified with an equilibrian where the concentration of Cyclin B is low, and the irreversible transition to S-G2-M phase, identified with a saddle-node bifurcation where the low concentration equilibria is lost. The model can be extended to include more elements of the cell cycle, such as other Cyclin proteins and checkpoints \cite{Tyson2002,Tyson2003}. In particular, we can include the dynamics mass (slow parameter) into the system by transforming it into a variable so that start of the cell cycle occurs dynamically. However, this causes the natural loss of G1 checkpoint, would there be a parameter that drives G1 checkpoint activation in the extended system?
 
 % Saddle-node bifurcations are very common in biology, medicine and ecology [references, eg. Li et al. 2019], explaining hysteresis and critical transitions. 
 
 In both cases, we are interested in adding more dynamics to the model yet being able to preserve the biological characteristic defined by the saddle-node bifurcation. In this paper, we find conditions in the extended system \eqref{equ:ExtendedSystem} for the carryover of a saddle-node bifurcation in the original system 
 \eqref{equ:OriginalSystem}. After reviewing the basic concepts of a saddle-node bifurcation in Section~\ref{sec:Background}, we first introduce our results for the one-dimensionas case in Section~\ref{sec:1DCase}, and then we extend out study to the $n$-dimensional case in Section~\ref{sec:NDCase}. We also provide a graphical and practical approch to guarantee the carryover of a saddle-node bifurcation. In Section~\ref{sec:Applications}, we apply our results to the two biological systems presented above. Note that we can further generalize our study by considering multi-parametric spaces ($\mu \in \mathbb{R}^{m}$) and function $g$ depending on $z$ in \eqref{equ:ExtendedSystem}. This is beyond the scope of this paper, but we briefly discuss this case in Section~\ref{sec:Discussion} along with further study.
 
-% In this paper, we provide conditions in which the extended system \eqref{equ:1DCase:ExtendedSystem} has a saddle-node bifurcation provided the original system \eqref{equ:1DCase:OriginalSystem} has a saddle-node bifurcation. The we apply our findings to the gen activation \eqref{equ:Example:GenActivation:1D} and cell cycle division \eqref{equ:Example:CyclinActivation:1D} applications.
+% In this paper, we provide conditions in which the extended system \eqref{equ:1DCase:ExtendedSystem} has a saddle-node bifurcation provided the original system \eqref{equ:1DCase:OriginalSystem} has a saddle-node bifurcation. The we apply our findings to the gen activation \eqref{equ:Application:GenActivation:1D} and cell cycle division \eqref{equ:Application:CyclinActivation:1D} applications.
 
 \section{Mathematical Background}
 \label{sec:Background}
@@ -612,13 +612,13 @@ As we might expect, Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1D
 \section{Applications}
 \label{sec:Applications}
 
-In this section we apply Propositions~\ref{the:NDCase:SaddleNodeBifurcationExtensionND} and \ref{the:NDCase:SaddleNodeBifurcationExtensionNDCorollary} to two models: the gen activation model \eqref{equ:Example:GenActivation:1D} and the cell cycle regulatory model \eqref{equ:Example:CyclinActivation:1D}.
+In this section we apply Propositions~\ref{the:NDCase:SaddleNodeBifurcationExtensionND} and \ref{the:NDCase:SaddleNodeBifurcationExtensionNDCorollary} to two models: the gen activation model \eqref{equ:Application:GenActivation:1D} and the cell cycle regulatory model \eqref{equ:Application:CyclinActivation:1D}.
 
 \subsection{Gen activation}
 
-Consider the gen activation model \eqref{equ:Example:GenActivation:1D}, where 
+Consider the gen activation model \eqref{equ:Application:GenActivation:1D}, where 
 \[f(x;r,s)=s-rx+\frac{x^{2}}{1+x^{2}}.\]
-This model is characterized by the existence of a saddle-node bifurcation as $s$ increases from zero when $r<\tfrac{1}{2}$ (see Figure~\ref{fig:Example:GenActivation}a). With initial condition $x(0)=0$, increasing $s$ would drive a critical transition that brings the activity of gen $x$ to the high values, thus activating the gene. If the value of $s$ is decreased, the activity of the gen remains in the active mode (see Figure~\ref{fig:Example:GenActivation}a).
+This model is characterized by the existence of a saddle-node bifurcation as $s$ increases from zero when $r<\tfrac{1}{2}$ (see Figure~\ref{fig:Application:GenActivation}a). With initial condition $x(0)=0$, increasing $s$ would drive a critical transition that brings the activity of gen $x$ to the high values, thus activating the gene. If the value of $s$ is decreased, the activity of the gen remains in the active mode (see Figure~\ref{fig:Application:GenActivation}a).
 The singularity conditions, $f=0$ and $D_{x}f=0$, give a parametrization of $r$ and $s$ in terms of $0< x\leq 1$
 \[
 r=\frac{2x}{(1+x^{2})^{2}}, \quad s = \frac{x^{2}(1-x^{2})}{(1+x^{2})^{2}}.
@@ -630,9 +630,9 @@ D_{xx}f = \frac{2(1-3x^{2})}{(1+x^{2})^{3}}\neq 0 \implies x\neq \frac{\sqrt{3}}
 and the transversality conditions, $D_{s}f=1\neq$ and $D_{r}f=-x\neq 0 $, do not impose extra conditions. Thus, the bifurcation curve is given by
 \begin{equation}
     \Gamma = \left\{ (x,r,s) : r=\frac{2x}{(1+x^{2})^{2}}, s = \frac{x^{2}(1-x^{2})}{(1+x^{2})^{2}}, x\in (0,1]\right\},
-    \label{equ:Example:GenActivation:Gamma}
+    \label{equ:Application:GenActivation:Gamma}
 \end{equation}
-and there is a saddle-node bifurcation at any $(x,a,b)\in\Gamma$ such that $x\neq\frac{\sqrt{3}}{3}$. The two-parameter bifurcation curve on is shown in Figure~\ref{fig:Example:GenActivation}b.
+and there is a saddle-node bifurcation at any $(x,a,b)\in\Gamma$ such that $x\neq\frac{\sqrt{3}}{3}$. The two-parameter bifurcation curve on is shown in Figure~\ref{fig:Application:GenActivation}b.
 
 
 \begin{figure}
@@ -643,25 +643,21 @@ and there is a saddle-node bifurcation at any $(x,a,b)\in\Gamma$ such that $x\ne
 %     \includegraphics[width=0.48\linewidth]{figures/ApplicationGenExtended2Bifurcation.pdf}
 %     \includegraphics[width=0.48\linewidth]{figures/ApplicationGenTwoParBifurcation1.pdf}
     \end{center}
-    \caption{a) Phase plot for $s=0$ and $r=0.4$. The critical transition occurs when $s$ increases and the left and middle equilibria collide and disappear at $s^*\approx 0.0418$, forcing gen activity to the remaining stable equilibria on the right. b) Two-parameter bifurcation diagram. The enclosed region corresponds to bistability (as shown in a)). The cusp corresponds to $x=\sqrt{3}/3$ (nondegeneracy condition not met) where a cusp bifurcation occurs. The blue horizontal (vertical) line is the nullcline $g=0$ of the extended system. c) Bifurcation diagram for the extended system. [d) Two-parameter bifurcation diagram. Showing both cases (transforming $r$ or $s$), keep one of them after discussion]}
-    \label{fig:Example:GenActivation}
+    \caption{a) Phase plot for $s=0$ and $r=0.4$. The critical transition occurs when $s$ increases and the left and middle equilibria collide and disappear at $s^*\approx 0.0418$, forcing gen activity to the remaining stable equilibria on the right. b) Two-parameter bifurcation diagram. The enclosed region corresponds to bistability (as shown in a)). The cusp corresponds to $x=\sqrt{3}/3$ (nondegeneracy condition not met) where a cusp bifurcation occurs. The blue horizontal (vertical) line is the nullcline $g=0$ of the extended system. c) Bifurcation diagram for the extended system.}
+    \label{fig:Application:GenActivation}
 \end{figure}
 
-[Showing both cases (transforming $r$ or $s$), keep one of them after discussion]
-
-
-\subsubsection{Transform $s$ into a variable}
 Now consider transforming $s$ into a variable with linear synthesis and degradation terms
 \begin{equation}
     \begin{aligned}
         \dot x & = f(x,s;r) = s - rx + \frac{x^{2}}{1+x^{2}}, \\
         \dot s & = g(s;r) = a - bs.
     \end{aligned}
-    \label{equ:Example:GenActivation2:2D}
+    \label{equ:Application:GenActivation2:2D}
 \end{equation}
-where $a>0$ and $b>0$. Note that the signal $s$ goes to a stable equilibrium $s=c=\frac{a}{b}$. Then, as long as $c$ is large enough the gen becomes active independently of the initial condition for $s$. For instance, for $r=0.4$ we need $c>s^*\approx0.0418$ (see Figure~\ref{fig:Example:GenActivation}a). The questions now is: given $c$ large enough, would it be possible to inactivate the gen of prevent the activation of the gen by varying the inactivation rate $r$? This can be answered with the proposition presented here.
+where $a>0$ and $b>0$. Note that the signal $s$ goes to a stable equilibrium $s=c=\frac{a}{b}$. Then, as long as $c$ is large enough the gen becomes active independently of the initial condition for $s$. For instance, for $r=0.4$ we need $c>s^*\approx0.0418$ (see Figure~\ref{fig:Application:GenActivation}a). The questions now is: given $c$ large enough, would it be possible to inactivate the gen of prevent the activation of the gen by varying the inactivation rate $r$? This can be answered with the proposition presented here.
 
-Take $x=0.3$ and use \eqref{equ:Example:GenActivation:Gamma} to compute $s=\tfrac{819}{11881}\approx0.0689$ and $r=\tfrac{6000}{11881}\approx 0.5050$, then if $c=\frac{a}{b}=\tfrac{819}{11881}>s^*$ the conditions of Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1D} are satisfied, i.e., $(x,s,r)\in\Gamma$ such that $g=0$ and $D_{r}g=-b\neq 0$ (singularity conditions \eqref{equ:1DCase:Proposition1:SingularityConditions}) and
+Take $x=0.3$ and use \eqref{equ:Application:GenActivation:Gamma} to compute $s=\tfrac{819}{11881}\approx0.0689$ and $r=\tfrac{6000}{11881}\approx 0.5050$, then if $c=\frac{a}{b}=\tfrac{819}{11881}>s^*$ the conditions of Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1D} are satisfied, i.e., $(x,s,r)\in\Gamma$ such that $g=0$ and $D_{r}g=-b\neq 0$ (singularity conditions \eqref{equ:1DCase:Proposition1:SingularityConditions}) and
 \[\det\begin{pmatrix}
             D_{r}f & D_{r}g \\
             D_{s}f & D_{s}g
@@ -672,35 +668,28 @@ Take $x=0.3$ and use \eqref{equ:Example:GenActivation:Gamma} to compute $s=\tfra
         \end{pmatrix} = a \neq 0,\]
 (transversality condition \eqref{equ:1DCase:Proposition1:TransversalityCondition}). This guarantees that there is saddle-node bifurcation as $r$ increases from 0.4, but it is not clear if this bifurcation drives gen inactivation via a critical transition. 
 
-If we apply Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1DCorollary} to Figure~\ref{fig:Example:GenActivation}, we find two saddle-node bifurcations as the nullclines of $g=0$ corresponding to $s=c\approx0.0689$ crosses transversally the two-parameter bifurcation curve. From here it is clear that the first saddle-node bifurcation, occurring at the bifurcation point mentioned above, gives rise to two equilibria (one stable and one unstable), but the second saddle-node bifurcation (where the unstable equilibria collides with the equilibria for active gen) drives the critical transition that inactivates the gen. Note that if $r$ decreases back to 0.4 the gen becomes active again by the `reverse' process.
+If we apply Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1DCorollary} to Figure~\ref{fig:Application:GenActivation}, we find two saddle-node bifurcations as the nullclines of $g=0$ corresponding to $s=c\approx0.0689$ crosses transversally the two-parameter bifurcation curve. From here it is clear that the first saddle-node bifurcation, occurring at the bifurcation point mentioned above, gives rise to two equilibria (one stable and one unstable), but the second saddle-node bifurcation (where the unstable equilibria collides with the equilibria for active gen) drives the critical transition that inactivates the gen. Note that if $r$ decreases back to 0.4 the gen becomes active again by the `reverse' process.
 
-Ultimately, we can show that gen inactivation is possible from the usual bifurcation diagram of the extended system, shown in Figure~\ref{fig:Example:GenActivation}c. 
-
-
-\subsubsection{Transform $r$ into a variable}
-
-Now consider transforming $r$ into a variable with linear synthesis and degradation terms
-\begin{equation}
-    \begin{aligned}
-        \dot x & = f(x,r;s) = s - rx + \frac{x^{2}}{1+x^{2}}, \\
-        \dot r & = g(r;s) = a - br.
-    \end{aligned}
-    \label{equ:Example:GenActivation1:2D}
-\end{equation}
-where, $a>0$ and $b>0$.
-
-According to Proposition \ref{the:1DCase:SaddleNodeBifurcationExtension1D}, there is a saddle-node bifurcation since the singularity conditions, $g=0$ and $D_{r}g=-b\neq 0$, and the transversality condition
-\[\det\begin{pmatrix}
-            D_{r}f & D_{r}g \\
-            D_{s}f & D_{s}g
-        \end{pmatrix} = 
-        \begin{pmatrix}
-            -x & -a\\
-            1 & 0
-        \end{pmatrix} = a \neq 0,\]
-are satisfied for $(x,r,s)\in \Gamma$, with $r=c=\frac{a}{b}$. This is also shown in Figure~\ref{fig:Example:GenActivation} applying Proposition~\ref{the:1DCase:SaddleNodeBifurcationExtension1DCorollary} where the nullclines of $g=0$ corresponding to $c=0.4$ and $c=0.6$ cross the two-parameter bifurcation curve transversally. Moreover, if $c=0.4$, $x(0)=0$, and $s$ increases from zero crossing the bifurcation curve at $s\approx0.05$, the critical transition occurs and the gen is activated even after $s$ returns to zero. Since $r$ is dynamic, the exact value of $s$ for which the gen is activated depends on the value of $r(0)$ but is close to $s\approx0.05$. 
+Ultimately, we can show that gen inactivation is possible from the usual bifurcation diagram of the extended system, shown in Figure~\ref{fig:Application:GenActivation}c. 
 
 \subsection{Cell cycle division}
+
+Consider the cell cycle model \eqref{equ:Application:CyclinActivation:1D} where $z=(Y, P, A)$. The basic model is characterized by saddle-node bifurcation associated with the start of start of the cell cycle. In Figure \ref{fig:Application:CyclinActivation}a we take $m$ as the bifurcation parameter. We observe the start of the cell cycle occurs with the loss of the state of low Cyclin B concentration (G1 checkpoint) via a saddle-node bifurcation (this is actually a saddle-node loop bifurcation, more explanation and details are needed). Here, $m$ is a slow parameter with its own dynamics that can be included in the system, for example, if we transform it into a variables following a logistic growth
+\begin{equation}
+    \frac{dm}{dt} = \mu m \left(1 - \frac{m}{K}\right),
+    \label{equ:Application:CyclinActivation:Mass}
+\end{equation}
+whre $\mu$ is the growth rate, and $K$ is the carrying capacity. If $K$ is larger that the value $m$ at tWe are he bifurcation ($\approx 0.8$) then the start of the cell cycle occurs naturally as $m$ increases. We are interested in knowing if G1 checkpoint activation can be drive by one parameter, for example $k_{5p}$. (for example, Sic1 can increase APC activation, sources, verification and details needed). This can be answered with the two-parameter bifurcation diagram in Figure~\ref{fig:Application:CyclinActivation}b. The start of the cell cycle is seen here as a horizontal line crossing form G1 stage to S-G2-M stage. To remain in the G1 state, the value of $k_{3p}$ must increase to above the intersection. Assuming the value of $k_{3p}$ returns to its basal value, the cell cycle resumes.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[width=0.48\linewidth]{figures/ApplicationCellCycleBifurcation.pdf}
+    \includegraphics[width=0.48\linewidth]{Manuscript/figures/ApplicationCellCycleTwoParBifurcation.pdf}
+    \end{center}
+    \caption{a) Bifurcation diagram for $m$. b) Two-parameter bifurcation diagram with $m$ and $k_5p$.}
+    \label{fig:Application:CyclinActivation}
+\end{figure}
+
 
 \section{Discussion}
 \label{sec:Discussion}
