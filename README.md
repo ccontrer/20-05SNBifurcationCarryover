@@ -13,6 +13,19 @@ A saddle-node bifurcation that has originated from the original saddle-node bifu
 
 The study of a carryover can be done via a two-parameter bifurcation diagram in the original system: if the nullcline of the new equation (<img src="https://latex.codecogs.com/gif.latex?g(\mu_{1};\mu_{2})"/> intersects transversally the two-parameter bifurcation curve in the <img src="https://latex.codecogs.com/gif.latex?\mu_1\mu_2"/>-plane and the tangent line in not parallel to the <img src="https://latex.codecogs.com/gif.latex?\mu_1"/>-axis at the intersction, then the extended system has a saddle-node bifurcation at the inersection as <img src="https://latex.codecogs.com/gif.latex?\mu_2"/> varies. See more details in the [manuscript (draft)](article.pdf). For illustrative examples see the Python notebooks below.
 
+The main idea is that a saddle-node bifurcation in a original system, such as that labeled `LP1` below,
+
+![bifurcation-original](./notebooks/figures/ApplicationCellCycleOriginalBifurcationFull.png)
+
+appears in the extended system, the one on the right labeled `LP1` below,
+
+![bifurcation-original](./notebooks/figures/ApplicationCellCycleExtendedlBifurcationFull.png)
+
+by simply using the two-parameter bifurcation diagram of the original system and the nullcline of the new equation (coloured green below).
+
+![bifurcation-original](./notebooks/figures/ApplicationCellCycleOriginalTwoParameterBifurcationFull.png)
+
+
 ### Notebooks with examples and applications:
 
 - [Toy examples](/notebooks/Carryover%20notebook.ipynb)
