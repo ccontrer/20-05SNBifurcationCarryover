@@ -33,3 +33,5 @@ by simply using the two-parameter bifurcation diagram of the original system and
 - [Gen activation](/notebooks/Application%20Gen%20activation.ipynb)
 
 - [Cell cycle progression](/notebooks/Application%20Cell%20cycle.ipynb)
+
+- [Diabetes model](/notebooks/Application%20Pathway%20to%20diabetes.ipynb)
